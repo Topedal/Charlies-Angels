@@ -1,0 +1,34 @@
+#config_version=5
+
+##! mode: btree
+
+mode:
+    start_events: 
+      - ball_starting
+      - mode_bonus_stopped              #bonus mode controls lamps when it is running
+    stop_events: mode_bonus_started   
+    priority: 125
+
+light_player:          
+    player_bonus:          
+        bonus: off               #turns all off
+    player_bonus{value%10==1}:         # player_bonus{value%10>=1}:   etc to fill 
+        l_1k_bonus: on
+    player_bonus{value%10==2}:
+        l_2k_bonus: on    
+    player_bonus{value%10==3}:
+        l_3k_bonus: on
+    player_bonus{value%10==4}:
+        l_4k_bonus: on      
+    player_bonus{value%10==5}:
+        l_5k_bonus: on
+    player_bonus{value%10==6}:
+        l_6k_bonus: on
+    player_bonus{value%10==7}:
+        l_7k_bonus: on
+    player_bonus{value%10==8}:
+        l_8k_bonus: on
+    player_bonus{value%10==9}:
+        l_9k_bonus: on
+    player_bonus{value>=10}:
+        l_10k_bonus: on

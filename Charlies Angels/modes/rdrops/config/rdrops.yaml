@@ -1,0 +1,86 @@
+#config_version=5
+
+##! mode: rdrops
+
+mode:
+  start_events: ball_starting
+  stop_events: ball_drain
+  priority: 160
+  
+shots:
+  #hitting a red drop lights the corresponding star rollover
+  rd1_shot:
+    switch: s_Drop_red_1
+    show_tokens:
+      light: l_1_star   #uses default profile unlit | lit
+    reset_events:
+      - ball_drain  
+  rd2_shot: 
+    switch: s_Drop_red_2
+    show_tokens:
+      light: l_2_star
+    reset_events:
+      - ball_drain  
+  rd3_shot: 
+    switch: s_Drop_red_3
+    show_tokens:
+      light: l_3_star
+    reset_events:
+      - ball_drain  
+  rd4_shot: 
+    switch: s_Drop_red_4
+    show_tokens:
+      light: l_4_star
+    reset_events:
+      - ball_drain  
+  rd5_shot: 
+    switch: s_Drop_red_5
+    show_tokens:
+      light: l_5_star
+    reset_events:
+      - ball_drain  
+  
+variable_player:
+  drop_target_bank_red_drops_down:
+    bonus_multiplier: 1 
+    
+  sw_dropRed_active{current_player.Rd5k == 0}:   #covers all red drops
+    score: 500
+  sw_dropRed_active{current_player.Rd5k == 1}:
+    score: 5000
+
+  sw_dr1_active{current_player.bonus_multiplier==3}:
+    bonus_multiplier: 1
+
+  # start rollovers score 100 or 1000 and bonus if lit
+  sw_ro1_active{device.shots.rd1_shot.state_name=='unlit'}:
+    score: 100    
+  sw_ro1_active{device.shots.rd1_shot.state_name=='lit'}: 
+    score: 1000
+    bonus: 1
+  sw_ro2_active{device.shots.rd2_shot.state_name=='unlit'}:
+    score: 100    
+  sw_ro2_active{device.shots.rd2_shot.state_name=='lit'}: 
+    score: 1000
+    bonus: 1
+  sw_ro3_active{device.shots.rd3_shot.state_name=='unlit'}:
+    score: 100    
+  sw_ro3_active{device.shots.rd3_shot.state_name=='lit'}: 
+    score: 1000
+    bonus: 1
+  sw_ro4_active{device.shots.rd4_shot.state_name=='unlit'}:
+    score: 100    
+  sw_ro4_active{device.shots.rd4_shot.state_name=='lit'}: 
+    score: 1000
+    bonus: 1
+  sw_ro5_active{device.shots.rd5_shot.state_name=='unlit'}:
+    score: 100    
+  sw_ro5_active{device.shots.rd5_shot.state_name=='lit'}: 
+    score: 1000
+    bonus: 1
+
+# sound_player:
+  # drop_target_bank_red_drops_down:
+    # sensational:
+      # action: play
+      # volume: 1.0

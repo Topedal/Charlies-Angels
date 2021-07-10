@@ -1,0 +1,26 @@
+#config_version=5
+show_player:
+  mode_attract_started:
+    attract_light_show_bonus:
+      speed: 5
+    attract_light_show_rollover_stars:
+      speed: 2      
+    attract_light_show_drops:
+      speed: 5
+    attract_light_show_rollover_chic:
+      speed: 5
+    attract_light_show_Xbonus:
+      speed: 5
+    attract_light_show_inlane:
+      speed: 8
+    attract_light_show_beye:
+      speed: 4
+      
+    # attract_sound_show:
+      # speed: 1
+    attract_display_show:
+      speed: 1
+      
+# individual lamp tester show      
+    # attract_l_35_show:
+      # speed: 1

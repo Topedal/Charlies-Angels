@@ -1,0 +1,16 @@
+#OPP settings
+
+# hardware:
+    # platform: opp
+    # driverboards: gen2
+    
+# opp:
+    # ports: COM4   #, COMx
+# #    #poll_hz: 50   # default is 100
+    # chains:     #not sure if this is needed or if chains are allocated according to the port list order
+       # 0: COM4
+       # #1: COMx
+       
+# MPF addresses are chain-board-pin, 
+#     for STM32 on USB the board is always 0, so OPP addresses are chain-0-pin 
+#     First STM32 is chain 0, so addresses are 0-0-pin.  Second STM32 is chain 1, so 1-0-pin  etc

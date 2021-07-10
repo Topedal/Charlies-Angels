@@ -1,0 +1,11 @@
+#config_version=5
+
+mode:
+    code: bonus.Count
+    start_events: 
+      - ball_ending
+      - collectB                  #- sw_be_active{current_player.bonus>=11}
+    stop_events: bonus_complete
+    use_wait_queue: true
+    priority: 105   #210   #105
+    

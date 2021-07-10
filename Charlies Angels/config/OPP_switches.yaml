@@ -1,0 +1,115 @@
+#  this is my original file that has OPP numbering.
+
+switches:
+    # machine switches - not in matrix, but direct drive coils by hardware. These are listed just for info:
+    #   left_flipper, right_flipper, left_kicker, right_kicker, top_bumper, bot_bumper    
+    #   when the Q (game over) relay is energised and T (tilt) relay is not energised then these switches are active
+
+    # improvements could be made by discrimination with extra switches that are currently paralleled
+    #  - pop bumpers (2), outlanes (2), ten points (6)
+
+    ## OPP switch numbers are Card-point.
+    #   point numbers for direct inputs they are 0 .. 7 wing 0, 8 .. 15 wing 1, 16 .. 23 wing 2, 24 .. 31 wing 3
+    #   point numbers for the switch matrix are 32 .. 39 col 0, 40 ..47 col 1  etc  
+    #     in STM32 matrix stobes must be on wing 2, returns on wing 3
+    
+    # to make GTB sys1 hardware suit OPP arrangements the GTB strobes are wired to OPP returns and vice versa
+    #   ie the banded end of the diode (the GTB strobe) is connected to the OPP return wing     
+
+    # switches not in the switch matrix - direct inputs for GTB and OPP
+    s_outhole:                 #this is the ball drain outhole
+        number: 0-0-0
+    s_slam_tilt:                # physically two switches in series, both NC. One on coin door, one under playfield
+        number: 0-0-1
+        tags: slam_tilt  
+        #type: 'NC'           #Normally closed declaration
+    
+    # Switch matrix
+    #Strobe 0 = Column 0
+    s_Test_button:                          #return 0     
+        number: 0-0-32
+    s_Drop_white_1:                         #return 1
+        number: 0-0-33
+        tags: dropWhite, bonus, dw1
+    s_Rollover_1:                           #return 2
+        number: 0-0-34
+        tags: ro1
+    s_Drop_red_1:                           #return 3
+        number: 0-0-35
+        tags: dropRed, bonus, dr1        
+    s_C_rollovers:                          #return 4       # - in game both C roll over switches combined    
+        number: 0-0-36
+        tags: lane, bonus
+    s_Bumpers:                              #return 5       # - in game both bumper score switches combined
+        number: 0-0-37 
+        tags: pop
+
+    #Strobe 1 = Column 1    
+    s_Coin_lhs:
+        number: 0-0-40                        #return 0
+    s_Drop_white_2:
+        number: 0-0-41                        #return 1
+        tags: dropWhite, bonus    
+    s_Rollover_2:                           #return 2
+        number: 0-0-42
+        tags: ro2        
+    s_Drop_red_2:                           #return 3
+        number: 0-0-43
+        tags: dropRed, bonus        
+    s_H_rollover:                           #return 4 
+        number: 0-0-44
+        tags: lane, bonus   
+
+    #Strobe 2 = Column 2     
+    s_Coin_rhs:                             #return 0
+        number: 0-0-48
+    s_Drop_white_3:
+        number: 0-0-49                        #return 1
+        tags: dropWhite, bonus
+    s_Rollover_3:                           #return 2
+        number: 0-0-50
+        tags: ro3         
+    s_Drop_red_3:                           #return 3
+        number: 0-0-51        
+        tags: dropRed, bonus
+    s_I_rollover:                           #return 4
+        number: 0-0-52
+        tags: lane, bonus, I_lane
+        
+    #Strobe 3 = Column 3        
+    s_Replay_button:                        #return 0
+        number: 0-0-56
+        tags: start
+    s_Left_inlane:                          #return 1
+        number: 0-0-57
+        tags: inlane, bonus        
+    s_Rollover_4:                           #return 2
+        number: 0-0-58
+        tags: ro4        
+    s_Drop_red_4:                           #return 3
+        number: 0-0-59
+        tags: dropRed, bonus
+    s_Right_inlane:                         #return 4
+        number: 0-0-60
+        tags: inlane, bonus
+        
+    #Strobe 4 = Column 4    
+    s_Tilt:                                 #return 0
+        number: 0-0-64
+        tags: tilt_warning                                  #this tag envokes tilt mode?
+    s_Outlanes:                             #return 1       #in game both outlane switches combined
+        number: 0-0-65
+        tags: outlane, bonus
+    s_Rollover_5:                           #return 2
+        number: 0-0-66
+        tags: ro5           
+    s_Drop_red_5:                           #return 3
+        number: 0-0-67
+        tags: dropRed, bonus
+    s_Bulls_eye:                            #return 4
+        number: 0-0-68
+        tags: be
+    s_10_point:                             #retirn 5       # there are six all up
+        number: 0-0-69
+        tags: 10pt    
+        

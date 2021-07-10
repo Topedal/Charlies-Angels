@@ -1,0 +1,41 @@
+#show_version=5
+- duration: 1
+  lights:
+    l_10k_bonus: 0
+    l_1k_bonus: on
+- duration: 1
+  lights:
+    l_1k_bonus: 0
+    l_2k_bonus: on
+- duration: 1
+  lights:
+    l_2k_bonus: 0
+    l_3k_bonus: on
+- duration: 1
+  lights:
+    l_3k_bonus: 0
+    l_4k_bonus: on
+- duration: 1
+  lights:
+    l_4k_bonus: 0
+    l_5k_bonus: on
+- duration: 1
+  lights:
+    l_5k_bonus: 0
+    l_6k_bonus: on
+- duration: 1
+  lights:
+    l_6k_bonus: 0
+    l_7k_bonus: on
+- duration: 1
+  lights:
+    l_7k_bonus: 0
+    l_8k_bonus: on
+- duration: 1
+  lights:
+    l_8k_bonus: 0
+    l_9k_bonus: on
+- duration: 1
+  lights:
+    l_9k_bonus: 0
+    l_10k_bonus: on

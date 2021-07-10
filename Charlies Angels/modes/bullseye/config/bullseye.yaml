@@ -1,0 +1,25 @@
+#config_version=5
+
+##! mode: bullseye
+
+mode:
+  start_events: ball_starting
+  stop_events: ball_drain
+  priority: 170
+  
+variable_player:
+  sw_be_active{current_player.bonus_multiplier==2}:
+    bonus_multiplier: 1
+  sw_be_active{current_player.bonus>=11}:
+    keepBM: 1              # when bonus is paid from bullseye the multiplier is retained
+
+event_player:    
+  sw_be_active{current_player.bonus>=11}:
+    collectB
+    
+# sound_player:
+  # #sw_be_active:           #this also works as a tag
+  # s_Bulls_eye_active:
+    # GunShot2:
+      # action: play
+      # volume: 1.0

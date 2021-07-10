@@ -1,0 +1,220 @@
+#config_version=5
+
+# this file is used with the physical GTB pinball machine
+
+hardware:
+  platform: lisy
+
+lisy:
+  connection: serial       #network
+  port: com7               #network_port: 5963
+  baud: 115200             #poll_hz: 100
+  # # # network_host: "192.168.14.29"
+  # #network_host: "localhost"
+  
+slide_player:
+  _overwrite: true
+  
+segment_display_player:
+  # if not in freeplay should show credits in coin display
+  
+  # empty all displays on game start and setup info display
+  game_start:
+    display0:
+      text: "{current_player.ball:d}" 
+    display1:
+      text: " "
+    display2:
+      text: " "
+    display3:
+      text: " "
+    display4:
+      text: " "
+
+# show score when adding players
+  player_added{num==1}:
+    display1:
+      text: "{players[0].score:d}"
+  player_added{num==2}:
+    display2:
+      text: "{players[1].score:d}"
+  player_added{num==3}:
+    display3:
+      text: "{players[2].score:d}"
+  player_added{num==4}:
+    display4:
+      text: "{players[3].score:d}"
+
+# clear only display0 after game
+  game_ended:
+    display0:
+      text: ""                          # should show coins if not in freeplay
+  game_ended{machine.player1_score > 0}:
+    display1:
+      text: "{machine.player1_score:d}"
+  game_ended{machine.player2_score > 0}:
+    display2:
+      text: "{machine.player2_score:d}"
+  game_ended{machine.player3_score > 0}:
+    display3:
+      text: "{machine.player3_score:d}"
+  game_ended{machine.player4_score > 0}:
+    display4:
+      text: "{machine.player4_score:d}"
+
+#flash display on player turn
+  ball_starting{player==1}:
+    display1:
+      action: flash
+  ball_starting{player==2}:
+    display2:
+      action: flash
+  ball_starting{player==3}:
+    display3:
+      action: flash
+  ball_starting{player==4}:
+    display4:
+      action: flash
+
+  player_score:
+    display1:
+      action: no_flash
+    display2:
+      action: no_flash
+    display3:
+      action: no_flash
+    display4:
+      action: no_flash
+  
+lights:
+    # for Lisy1 numbering
+    
+    # l_game_over_relay:
+        # number:1
+    # l_tilt_relay:
+        # numbe: 2
+   
+    l_C_rollover_left:
+        number: 17          
+        tags: lane, laneCl
+    l_H_rollover:
+        number: 18
+        tags: lane, laneH
+    l_I_rollover:
+        number: 16
+        tags: lane, laneI
+    l_C_rollover_right:
+        number: 15
+        tags: lane, laneCr
+    
+    l_5k_wlit_white_drops:
+        number: 6
+        tags: 5k_wd        
+    l_adv_bonus_mult_white_drops:
+        number: 7
+        #tags: advMult
+    l_5k_wlit_red_drops:
+        number: 5
+        tags: 5k_rd
+    l_adv_bonus_mult_red_drops:
+        number: 8
+    l_extra_ball_white_drops:
+        number: 21
+        tags: eb_wd
+    l_adv_bonus_mult_bulls_eye:
+        number: 10
+    l_score_bonus_bulls_eye:
+        number: 19
+        
+    l_1k_bonus:
+        number: 23
+        tags: bonus, bx
+    l_2k_bonus:
+        number: 24
+        tags: bonus, bx
+    l_3k_bonus:
+        number: 25
+        tags: bonus, bx
+    l_4k_bonus:
+        number: 26
+        tags: bonus
+    l_5k_bonus:
+        number: 27
+        tags: bonus
+    l_6k_bonus:
+        number: 28
+        tags: bonus
+    l_7k_bonus:
+        number: 29
+        tags: bonus
+    l_8k_bonus:
+        number: 30
+        tags: bonus
+    l_9k_bonus:
+        number: 31
+        tags: bonus
+    l_10k_bonus:
+        number: 32
+        tags: bonus
+        
+    l_2x_bonus:
+        number: 36    # should be 36
+        tags: 2x, bonusMult
+    l_3x_bonus:
+        number: 35
+        tags: 3x, bonusMult
+    l_4x_bonus:
+        number: 34
+        tags: 4x,bonusMult
+    l_5x_bonus:
+        number: 33
+        tags: 5x, bonusMult
+    
+    l_1_star:
+        number: 13
+        tags: stars 
+    l_2_star:
+        number: 14
+        tags: stars
+    l_3_star:
+        number: 12
+        tags: stars 
+    l_4_star:
+        number: 11 
+        tags: stars
+    l_5_star:
+        number: 9 
+        tags: stars
+       
+    l_left_inlane:
+        number: 20
+    l_shoot_again_pf:
+        number: 4                   #in h/w this does pf + headbox
+    l_right_inlane:
+        number: 22
+
+    # # headbox string     
+    l_hi_score_to_date_hb:
+        number: 3
+    # l_tilt_hb:                   #this is done via relay in h/w
+        # number: 
+        # default_on_color: ffffff
+        
+        
+# hardware_sound_systems:    # must be in machine config
+  # default:
+    # label: Lisy
+
+# hardware_sound_player:
+  # CHICgrp_unlit_complete:  
+    # "Wow": play_file  
+
+##  copy from LISY image        
+# hardware_sound_systems:
+    # debug: true
+    # default:
+        # label: LISY
+
+# hardware_sound_player:
+    # game_started:
+        # 105: play

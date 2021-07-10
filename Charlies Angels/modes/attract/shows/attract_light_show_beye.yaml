@@ -1,0 +1,25 @@
+#show_version=5
+
+- duration: 1
+  lights:
+    l_adv_bonus_mult_bulls_eye: on
+    l_score_bonus_bulls_eye: 0  
+- duration: 1
+  lights:
+    l_adv_bonus_mult_bulls_eye: 0
+    l_score_bonus_bulls_eye: on
+- duration: 1
+  lights:
+    l_adv_bonus_mult_bulls_eye: 0
+    l_score_bonus_bulls_eye: 0
+- duration: 1
+  lights:
+    l_adv_bonus_mult_bulls_eye: on
+    l_score_bonus_bulls_eye: on
+- duration: 1
+  lights:
+    l_adv_bonus_mult_bulls_eye: 0
+    l_score_bonus_bulls_eye: 0
+    
+
+    

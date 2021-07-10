@@ -1,0 +1,94 @@
+#config_version=5
+
+##! mode: base
+
+# Charlies Angels base  
+
+mode:
+    start_events: ball_starting
+    #stop_events: mode_bonus_started   #ing     #ball_drain
+    priority: 120
+    
+    
+config:
+     - light_player.yaml    # this goes in ..\mode\base\config
+
+variable_player:
+    sw_lane:              #these are the top lanes
+        score: 500
+    sw_inlane:
+        score: 500
+    sw_outlane: 
+        score: 5000      
+    sw_bonus:
+        bonus: 1
+    sw_pop:
+        score: 1000 if game.balls_per_game==3 else 100        
+    sw_10pt:
+        score: 10
+        
+    player_bonus{current_player.bonus>19}:    # limit bonus count
+        bonus:
+            int: 19
+            action: set
+    player_bonus_multiplier{current_player.bonus_multiplier>5}:
+        bonus_multiplier:
+            int: 5
+            action: set    
+            
+    ball_drain:
+        keepBM:       # this comes from hitting bullseye with bonus >= 11
+            int: 0
+            action: set
+
+
+# hardware_sound_player:
+  # ball_started: #{ball==1}:
+    # 2:
+      # action: play
+      # #"GMorning": play_file
+    
+  # game_started:
+    # "Theme_Song":
+      # action: play_file
+      # platform_options:
+        # loop: true
+        # # no_cache: false        
+
+
+
+# sound_player:
+# #hardware_sound_player:
+  # ball_started{ball==1}:
+    # GMorning:
+      # action: play
+      # volume: 1.0
+  # ball_started{ball!=1}:  
+    # GLAngels:
+      # action: play
+      # volume: 1.0  
+  # sw_outlane_active:
+  # # ball_drain:
+    # OhBossley:
+      # action: play
+      # volume: 1.0
+  # sw_pop_active:
+    # Gun_Silencer:
+      # action: play
+      # volume: 1.0
+      
+  # ball_started:      #put this back in after debug!
+    # Theme_Song:
+      # action: play
+      # loops: -1
+  # ball_drain:
+    # Theme_Song:
+      # action: stop
+
+
+  # sw_inlane_active:
+    # #priority: 5
+    # OhBossley:
+      # #priority: 5
+      # action: play
+      # volume: 1.0      

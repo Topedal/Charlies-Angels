@@ -1,0 +1,51 @@
+#config_version=5
+
+# light_player.yaml   ..\game\config\light_player.yaml
+            # this is the general file and is called from config: section settings in base mode
+
+light_player:        
+    
+    "{current_player.EBH>0 and current_player.EB11k>0}":
+        l_extra_ball_white_drops: on
+    "{current_player.EBH==0 or current_player.EB11k==0}":
+        l_extra_ball_white_drops: off
+        
+    "{current_player.Rd5k == 0}":
+        l_5k_wlit_red_drops: off    
+    "{current_player.Rd5k > 0}":
+        l_5k_wlit_red_drops: on
+
+    player_bonus{current_player.bonus<11}:
+        l_score_bonus_bulls_eye: off        
+    player_bonus{current_player.bonus>=11}:
+        l_score_bonus_bulls_eye: on
+        
+    extra_ball_awarded:
+        l_shoot_again_pf: on      #covers pf + headbox, want this to stay on till point scored
+    # player_score:               # this doesn't work, ball drain clears the lamp
+        # l_shoot_again_pf: off
+        
+    #player_adv_mult:                    this is the "shoot this target" to increase multipler
+    player_bonus_multiplier{value!=2}:
+        l_adv_bonus_mult_bulls_eye: off
+    player_bonus_multiplier{value==2}:
+        l_adv_bonus_mult_bulls_eye: on
+    player_bonus_multiplier{value!=3}:
+        l_adv_bonus_mult_red_drops: off
+    player_bonus_multiplier{value==3}:
+        l_adv_bonus_mult_red_drops: on
+    player_bonus_multiplier{value!=4}:
+        l_adv_bonus_mult_white_drops: off
+    player_bonus_multiplier{value==4}:
+        l_adv_bonus_mult_white_drops: on
+     
+    player_bonus_multiplier:              
+        bonusMult: off                              ## put this in lamp tags I think
+    "{current_player.bonus_multiplier>=2}":
+        l_2x_bonus: on
+    "{current_player.bonus_multiplier>=3}":
+        l_3x_bonus: on
+    "{current_player.bonus_multiplier>=4}":
+        l_4x_bonus: on
+    "{current_player.bonus_multiplier>=5}":
+        l_5x_bonus: on

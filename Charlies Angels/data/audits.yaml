@@ -1,0 +1,49 @@
+events: {}
+player: {}
+shots:
+  AnyWdrop: 17
+  Cshot: 661
+  HHshot: 13
+  HorI_shot: 741
+  Hshot: 535
+  Ishot: 623
+  in_left: 311
+  in_right: 121
+  my_shot: 187
+  rd1_shot: 143
+  rd2_shot: 136
+  rd3_shot: 183
+  rd4_shot: 144
+  rd5_shot: 149
+switches:
+  reset: 0
+  s_10_point: 544
+  s_Bulls_eye: 455
+  s_Bumpers: 1665
+  s_C_rollovers: 668
+  s_Coin_lhs: 0
+  s_Coin_rhs: 0
+  s_Drop_red_1: 147
+  s_Drop_red_2: 138
+  s_Drop_red_3: 189
+  s_Drop_red_4: 151
+  s_Drop_red_5: 151
+  s_Drop_white_1: 253
+  s_Drop_white_2: 256
+  s_Drop_white_3: 189
+  s_H_rollover: 539
+  s_I_rollover: 633
+  s_Left_inlane: 3217
+  s_Outlanes: 92
+  s_Replay_button: 108
+  s_Right_inlane: 449
+  s_Rollover_1: 308
+  s_Rollover_2: 181
+  s_Rollover_3: 324
+  s_Rollover_4: 317
+  s_Rollover_5: 312
+  s_Test_button: 0
+  s_Tilt: 21
+  s_outhole: 1279
+  s_slam_tilt: 9
+  trough_sw: 0

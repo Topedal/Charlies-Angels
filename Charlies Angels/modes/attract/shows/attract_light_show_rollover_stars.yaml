@@ -1,0 +1,22 @@
+#show_version=5
+- duration: 1
+  lights:
+    l_5_star: 0
+    l_1_star: on
+- duration: 1
+  lights:
+    l_1_star: 0
+    l_2_star: on
+- duration: 1
+  lights:
+    l_2_star: 0
+    l_3_star: on
+- duration: 1
+  lights:
+    l_3_star: 0
+    l_4_star: on
+- duration: 1
+  lights:
+    l_4_star: 0
+    l_5_star: on
+

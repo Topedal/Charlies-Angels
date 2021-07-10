@@ -1,0 +1,84 @@
+#original sound setup from config.yaml
+
+
+sound_system:
+  master_volume: 0.75
+  tracks:
+    music:
+      type: standard
+      simultaneous_sounds: 1
+      volume: 0.5
+    voice:
+      type: standard
+      simultaneous_sounds: 1
+      volume: 0.7
+    sfx:
+      type: standard
+      simultaneous_sounds: 8
+      volume: 0.4
+      
+# hardware_sound_systems:
+    # default:
+        # label: LISY     
+        
+assets:
+  sounds:
+    default:
+      load: on_demand  #preload
+    music:
+      track: music
+    sfx:
+      track: sfx
+    voice:
+      track: voice
+   
+sounds:                  # need to equalise, sensational,  i love it?
+  # Wow:              
+    # file: Wow.wav         #looks like if you call a sound by it's file name 
+    # volume: 0.5           #  you don't need to delacre it in sounds:
+  
+  # TSong:
+    # priority: 10
+    # file: Theme_Song.wav
+    
+  OhBossley:
+    file: OhBossley.wav
+  
+  GLAngels:
+    priority: 5
+    file: GoodLuckAngels.wav
+    
+  GMorning:
+    priority: 5
+    file: GoodMorning.wav
+	
+-------------------------------------------------------------------
+
+and then in modes you can yse
+
+sound_player:
+  ball_started{ball==1}:
+    GMorning:
+      action: play
+      volume: 1.0
+  ball_started{ball!=1}:  
+    GLAngels:
+      action: play
+      volume: 1.0  
+  sw_outlane_active:
+  # ball_drain:
+    OhBossley:
+      action: play
+      volume: 1.0
+  sw_pop_active:
+    Gun_Silencer:
+      action: play
+      volume: 1.0
+      
+  ball_started:      #put this back in after debug!
+    Theme_Song:
+      action: play
+      loops: -1
+  ball_drain:
+    Theme_Song:
+      action: stop

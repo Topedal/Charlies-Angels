@@ -1,0 +1,35 @@
+Sound file
+
+music:
+Theme_song	games start with a low priotity
+
+sfx:
+Gun_Silencer	pops
+Gunshot2	bulls eye
+
+voice:
+GoodMorning	ball lauch  - first ball
+GoodLuckAngels	ball launch - other than first ball
+sensational	red drops complete
+Iloveit		white drops complete
+Wow		CHIC lanes complete
+whooTracey	special scored  (inlane lit hit) 
+OhBossley	outlane
+
+Ooh		bottom star rollover
+ohh-end		middle star rollover
+yess		top star rollover
+
+
+spares in \lisy\mpfcfg\LISY1\005\hardware_sounds   in .mp3
+Gun
+MyNameisCharlie
+theme
+WellAngels
+
+
+events that should have sounds:
+extra ball
+bonus count down
+10 pt
+

@@ -1,0 +1,301 @@
+#config_version=5
+
+# Charlies Angels 
+#   pretty close to the original GTB rule set
+
+# hardware:   # see the gtb-lights.yaml file
+
+config:  
+  # IMPORTANT: you can only have one of the two files below active - you must comment one out
+  - gtb-lights.yaml       #this file for the real physical GTB pinball, has LISY h/w setup + lights
+  #- monitor-lights.yaml   # this file has colour specifications in it to look better in mpf monitor
+                          #  plus MediaController sounds
+ 
+modes:          #priority
+  - base        #120
+  - btree       #125
+  - chic        #130
+  - inlanes     #200
+  - wdrops      #150
+  - rdrops      #160
+  - bullseye    #170
+  #- credits    # enable this for coin play
+  - bonus       #105?  - this is a replacemnt for the inbuilt mode
+  - tilt
+ 
+game:
+  balls_per_game: 3
+  max_players: 4
+  
+player_vars:
+    bonus:
+        initial_value: 0
+        
+    bonus_multiplier:
+        initial_value: 1
+    
+segment_displays:
+    display0:        # the player is in specific (gtb_lights | monitor_lights) file
+        number: 0
+    display1:
+        number: 1
+    display2:
+        number: 2
+    display3:
+        number: 3
+    display4:
+        number: 4
+    
+digital_outputs:       
+    #this means the h/w will take care of the backbox lights 
+    game_over_relay:
+        number: 1
+        type: light
+        enable_events: ball_started
+        disable_events: ball_will_end
+    tilt_relay:
+        number: 2
+        type: light
+        enable_events: tilt
+        disable_events: ball_end          
+    
+switches:
+    # for Lisy1 numbering
+    
+    # machine switches - not in matrix, but direct drive coils by hardware. These are listed just for info:
+    #   left_flipper, right_flipper, left_kicker, right_kicker, top_bumper, bot_bumper    
+    #   when the Q (game over) relay is energised and T (tilt) relay is not energised then these switches are active
+
+    # improvements could be made by discrimination with extra switches that are currently paralleled
+    #  - pop bumpers (2), outlanes (2), ten points (6)
+
+
+    # switches not in the switch matrix - direct inputs for GTB and Lisy
+    s_outhole:                 #this is the ball drain outhole
+        number: 66
+    s_slam_tilt:                # physically two switches in series, both NC. One on coin door, one under playfield     #maybe for MPF it should be named "slam"
+        number: 76
+        tags: slam_tilt  
+        #type: 'NC'           #Normally closed declaration
+    reset:
+        number: 56            #this is the reset pb on the mpu board 
+    
+    
+    # Switch matrix         GTB Sys1 are numbered RowColumn, rows are returns, cols are strobes
+    #Strobe 0 = Column 0
+    s_Test_button:                          #return 0     
+        number: 0
+    s_Drop_white_1:                         #return 1
+        number: 10
+        tags: dropWhite, bonus, dw1
+    s_Rollover_1:                           #return 2
+        number: 20
+        tags: ro1
+    s_Drop_red_1:                           #return 3
+        number: 30
+        tags: dropRed, bonus, dr1        
+    s_C_rollovers:                          #return 4       # - in game both C roll over switches combined    
+        number: 40
+        tags: lane, bonus
+    s_Bumpers:                              #return 5       # - in game both bumper score switches combined
+        number: 50
+        tags: pop
+
+    #Strobe 1 = Column 1    
+    s_Coin_lhs:
+        number: 1                        #return 0
+    s_Drop_white_2:
+        number: 11                        #return 1
+        tags: dropWhite, bonus    
+    s_Rollover_2:                           #return 2
+        number: 21
+        tags: ro2        
+    s_Drop_red_2:                           #return 3
+        number: 31
+        tags: dropRed, bonus        
+    s_H_rollover:                           #return 4 
+        number: 41
+        tags: lane, bonus   
+
+    #Strobe 2 = Column 2     
+    s_Coin_rhs:                             #return 0
+        number: 2
+    s_Drop_white_3:
+        number: 12                        #return 1
+        tags: dropWhite, bonus
+    s_Rollover_3:                           #return 2
+        number: 22
+        tags: ro3         
+    s_Drop_red_3:                           #return 3
+        number: 32        
+        tags: dropRed, bonus
+    s_I_rollover:                           #return 4
+        number: 42
+        tags: lane, bonus, I_lane
+        
+    #Strobe 3 = Column 3        
+    s_Replay_button:                        #return 0
+        number: 3
+        tags: start
+    s_Left_inlane:                          #return 1
+        number: 13
+        tags: inlane, bonus        
+    s_Rollover_4:                           #return 2
+        number: 23
+        tags: ro4        
+    s_Drop_red_4:                           #return 3
+        number: 33
+        tags: dropRed, bonus
+    s_Right_inlane:                         #return 4
+        number: 43
+        tags: inlane, bonus
+        
+    #Strobe 4 = Column 4    
+    s_Tilt:                                 #return 0
+        number: 4
+        tags: tilt_warning                               #this tag envokes tilt mode?
+    s_Outlanes:                             #return 1    #in game both outlane switches combined
+        number: 14
+        tags: outlane, bonus
+    s_Rollover_5:                           #return 2
+        number: 24
+        tags: ro5           
+    s_Drop_red_5:                           #return 3
+        number: 34
+        tags: dropRed, bonus
+    s_Bulls_eye:                            #return 4
+        number: 44
+        tags: be, bonus   #, bebon
+    s_10_point:                             #return 5    # 6 total (drops x2, kickers x2, rubbers x2)
+        number: 54
+        tags: 10pt    
+        
+# info_lights:    # these are handled by digital_outputs and hardware relays
+    # tilt:
+        # light: tilt
+    # # game_over:             
+        # # light: gameOver
+    
+    
+coils:
+    # for Lisy1 numbering
+
+    # machine switches - not in matrix, but direct drive coils. These are listed just for info
+    # when the Q (game over) relay is energised and T (tilt) relay is not energised then these coils are actived by direct solenoid voltage switches 
+    # 
+    # left_flipper, right_flipper, left_kicker, right_kicker, top_bumper, bot_bumper
+    #
+    # flippers have traditional EOS circuits
+
+    c_Q_relay:                      #Game over relay - energised to enable game play
+        number: 101
+        default_pulse_ms: 16        # the OPP default pulse widrh
+        default_hold_power: 1.0     # it's a hold coil
+    c_T_relay:                      #Tilt relay - energised when a tilt occurs
+        number: 102
+        default_pulse_ms: 16        
+        default_hold_power: 1.0     # it's a hold coil
+
+    c_Outhole:
+        number: 1
+        default_pulse_ms: 10
+    c_Knocker:
+        number: 2
+    c_10_chime:
+        number: 3
+    c_100_chime:
+        number: 4
+    c_1000_chime:
+        number: 5
+    c_white_drop_reset:
+        number: 7
+        default_pulse_ms: 10        
+    c_red_drop_reset:
+        number: 8
+        default_pulse_ms: 10
+
+drop_targets:
+    #debug: true
+    rdrop1:
+        switch: s_Drop_red_1
+        reset_coil: c_red_drop_reset
+    rdrop2:
+        switch: s_Drop_red_2
+        reset_coil: c_red_drop_reset
+    rdrop3:
+        switch: s_Drop_red_3
+        reset_coil: c_red_drop_reset
+    rdrop4:
+        switch: s_Drop_red_4
+        reset_coil: c_red_drop_reset
+    rdrop5:
+        switch: s_Drop_red_5
+        reset_coil: c_red_drop_reset
+        
+    wdrop1:
+        switch: s_Drop_white_1
+        reset_coil: c_white_drop_reset
+    wdrop2:
+        switch: s_Drop_white_2
+        reset_coil: c_white_drop_reset
+    wdrop3:
+        switch: s_Drop_white_3
+        reset_coil: c_white_drop_reset
+        
+drop_target_banks:
+    red_drops:
+        drop_targets: rdrop1, rdrop2, rdrop3, rdrop4, rdrop5
+        reset_coils: c_red_drop_reset
+        reset_on_complete: 1s
+    
+    white_drops:
+        drop_targets: wdrop1, wdrop2, wdrop3
+        reset_coils: c_white_drop_reset
+        reset_events: 
+            - Hshot_hit
+            - Ishot_hit
+            - extra_ball_awarded
+            - player_bonus{current_player.bonus==11 and current_player.EBH>0}
+
+ball_devices:
+    bd_outhole:
+        ball_switches: s_outhole
+        eject_coil: c_Outhole
+        eject_targets: playfield     
+        tags: drain, home, trough     #it's the trough tag that is important?
+        eject_timeouts: 3s            
+
+playfields:
+    playfield:
+        default_source_device: bd_outhole
+        tags: default
+        
+# flippers:                         #there are none as direct controlled by game_over_relay
+# autofire_coils:                   #there are none as direct controlled by game_over_relay
+        
+virtual_platform_start_active_switches:
+    s_outhole                   #puts a ball in the outhole
+                
+credits:
+  max_credits: 12
+  free_play: false    # Changing this makes no difference to free_play / credit.  
+                      # Disable the credit mode in modes: section above to enable free play
+  switches:
+    - switch: s_Coin_lhs
+      type: money
+      value: 0.20
+    - switch: s_Coin_rhs
+      type: money
+      value: 1.0
+  pricing_tiers:
+    - price: .20
+      credits: 1
+    - price: 1
+      credits: 5
+  events:
+    - event: InLanescoreSpec
+      type: ILspec
+      credits: 1
+    - event: high_score_award_display
+      type: HSspec
+      credits: 3

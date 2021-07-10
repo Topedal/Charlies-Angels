@@ -1,0 +1,33 @@
+#show_version=5
+- duration: 1
+  lights:
+    l_I_rollover: 0
+    l_C_rollover_right: on
+    l_C_rollover_left: on
+- duration: 1
+  lights:
+    l_C_rollover_right: 0
+    l_C_rollover_left: 0
+    l_H_rollover: on
+- duration: 1
+  lights:
+    l_H_rollover: 0
+    l_I_rollover: on
+- duration: 1
+  lights:
+    l_H_rollover: 0
+    l_I_rollover: 0
+    l_C_rollover_right: 0
+    l_C_rollover_left: 0
+- duration: 3
+  lights:
+    l_H_rollover: on
+    l_I_rollover: on
+    l_C_rollover_right: on
+    l_C_rollover_left: on
+- duration: 1
+  lights:
+    l_H_rollover: 0
+    l_I_rollover: 0
+    l_C_rollover_right: 0
+    l_C_rollover_left: 0

@@ -1,0 +1,67 @@
+#config_version=5
+
+# light_player.yaml   ..\game\config\light_player.yaml
+
+light_player:
+
+    # ball_drain:
+        # stars:
+            # color: off
+    # rd3_hit:
+        # #show_tokens:
+        # l_3_star
+        # #l_3_star
+    
+    white_bank_sg_complete:
+        l_5k_wlit_red_drops:
+            color: ffffff
+            
+    rollover_lanes_complete:
+        # 2x:
+            # color: 00ff00
+        l_adv_bonus_mult_bulls_eye:
+            color: 00ff00
+            
+ 
+            
+        # flashing:
+            # show_tokens:
+                # lights: 3x
+            # key: cv
+            # action: play
+            # priority: 100
+            # speed: 5
+    player_bonus:          
+        bonus: off        
+    player_bonus{value%10==1}:       # player_bonus{value%10>=1}:   etc to fill bonus tree
+        l_1k_bonus: on
+    player_bonus{value%10==2}:
+        l_2k_bonus: on    
+    player_bonus{value%10==3}:
+        l_3k_bonus: on
+    player_bonus{value%10==4}:
+        l_4k_bonus: on      
+    player_bonus{value%10==5}:
+        l_5k_bonus: on
+    player_bonus{value%10==6}:
+        l_6k_bonus: on
+    player_bonus{value%10==7}:
+        l_7k_bonus: on
+    player_bonus{value%10==8}:
+        l_8k_bonus: on
+    player_bonus{value%10==9}:
+        l_9k_bonus: on
+    player_bonus{value>=10}:
+        l_10k_bonus: on
+     
+    player_bonus_multiplier:
+        bonusMult: off
+    player_bonus_multiplier{value>=2}:
+        2x: on
+    player_bonus_multiplier{value>=3}:
+        3x: on
+    player_bonus_multiplier{value>=4}:
+        4x: on
+    player_bonus_multiplier{value>=5}:
+        5x: on
+

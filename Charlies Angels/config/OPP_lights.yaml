@@ -1,0 +1,162 @@
+#  this is my original file that has OPP numbering.
+
+lights:
+    # A serial string of WS2812 rgb leds
+    #  this from wing 0, point 4 the PB15 pin
+    
+    # maybe eventually split into 2 strings: headbox and playfield
+    # laid out to suit the physical arrangeent of the presoldered chain
+
+    #playfield string - First STM32, Wing 0, pin 4
+   
+    l_C_rollover_left:
+        type: rgb
+        start_channel: 0-0-0           #so red is 0-0-0, green 0-0-1, blue 0-0-2
+        default_on_color: ffff00
+        tags: lane, laneCl
+    l_H_rollover:
+        type: rgb                      #so red is 0-0-3 etc
+        previous: l_C_rollover_left    #number: 0-0-3
+        default_on_color: ffff00
+        tags: lane, laneH
+    l_I_rollover:
+        subtype: led
+        type: rgb
+        number: 0-0-6
+        #previous: l_H_rollover
+        default_on_color: ffff00
+        tags: lane, laneI
+    l_C_rollover_right:
+        subtype: led
+        type: rgb
+        number: 0-0-9
+        #previous: l_I_rollover
+        default_on_color: ffff00
+        tags: lane, laneCr
+    
+    l_5k_wlit_white_drops:
+        number:
+        default_on_color: ffffff  
+        tags: 5k_wd        
+    l_adv_bonus_mult_white_drops:
+        number:
+        default_on_color: 00ff00
+        #tags: advMult
+    l_5k_wlit_red_drops:
+        number: 
+        default_on_color: ffffff
+        tags: 5k_rd
+    l_adv_bonus_mult_red_drops:
+        number:
+    l_extra_ball_white_drops:
+        number:
+        default_on_color: ffff00
+        tags: eb_wd
+    l_adv_bonus_mult_bulls_eye:
+        number: 
+        default_on_color: 00ff00
+    l_score_bonus_bulls_eye:
+        number: 
+        default_on_color: ffff00        
+        
+    l_1k_bonus:
+        number: 
+        default_on_color: ffff00
+        tags: bx  #bonus, bx
+    l_2k_bonus:
+        number: 
+        default_on_color: ffff00
+        tags: bx  #bonus, bx
+    l_3k_bonus:
+        number: 
+        default_on_color: ffff00
+        tags: bx  #bonus, bx
+    l_4k_bonus:
+        number: 
+        default_on_color: ffff00
+        tags: bx  #bonus
+    l_5k_bonus:
+        number: 
+        default_on_color: ffff00
+        tags: bx  #bonus
+    l_6k_bonus:
+        number: 
+        default_on_color: ffff00
+        tags: bx  #bonus
+    l_7k_bonus:
+        number: 
+        default_on_color: ffff00
+        tags: bx  #bonus
+    l_8k_bonus:
+        number: 
+        default_on_color: ffff00
+        tags: bx  #bonus
+    l_9k_bonus:
+        number: 
+        default_on_color: ffff00
+        tags: bx  #bonus
+    l_10k_bonus:
+        number: 
+        default_on_color: ffff00
+        tags: bx  #bonus
+        
+    l_2x_bonus:
+        number:
+        default_on_color: 00ff00
+        tags: 2x, bonusMult
+    l_3x_bonus:
+        number:
+        default_on_color: 00ff00        
+        tags: 3x, bonusMult
+    l_4x_bonus:
+        number: 
+        default_on_color: 00ff00
+        tags: 4x,bonusMult
+    l_5x_bonus:
+        number: 
+        default_on_color: 00ff00
+        tags: 5x, bonusMult
+    
+    l_1_star:
+        number: 
+        default_on_color: red
+        tags: stars 
+    l_2_star:
+        number: 
+        default_on_color: red
+        tags: stars
+    l_3_star:
+        number: 
+        default_on_color: red
+        tags: stars 
+    l_4_star:
+        number:  
+        default_on_color: red
+        tags: stars
+    l_5_star:
+        number:  
+        default_on_color: red
+        tags: stars
+       
+    l_left_inlane:
+        number: 
+        default_on_color: ff0000
+    l_shoot_again_pf:
+        number:
+        default_on_color: ff0000
+    l_right_inlane:
+        number: 
+        default_on_color: ff0000
+
+    # # headbox string     
+    # l_shoot_again_hb:
+        # number:
+        # default_on_color: ffffff
+    # l_hi_score_to_date_hb:
+        # number:
+        # default_on_color: ffffff
+    # l_tilt_hb:
+        # number: 
+        # default_on_color: ffffff
+
+    

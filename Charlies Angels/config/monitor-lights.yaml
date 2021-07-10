@@ -1,0 +1,333 @@
+#config_version=5
+
+# this file is used with mpf monitor because it has colours specified
+
+lights:
+    # l_game_over_relay:
+        # number:1
+    # l_tilt_relay:
+        # numbe: 2
+        
+    # # headbox string     
+    l_hi_score_to_date_hb:
+        number: 3
+        default_on_color: ffffff
+    # l_tilt_hb:                   #this is dobe via relay in h/w
+        # number: 
+        # default_on_color: ffffff        
+    l_shoot_again_pf:
+        number: 4                   #in h/w this does pf + headbox
+        default_on_color: ff0000
+
+    l_5k_wlit_red_drops:
+        number: 5
+        default_on_color: ffffff
+        tags: 5k_rd    
+    l_5k_wlit_white_drops:
+        number: 6
+        default_on_color: ffffff  
+        tags: 5k_wd        
+    l_adv_bonus_mult_white_drops:
+        number: 7
+        default_on_color: 00ff00
+        #tags: advMult
+    l_adv_bonus_mult_red_drops:
+        number: 8
+        default_on_color: 00ff00
+    l_5_star:
+        number: 9 
+        default_on_color: red
+        tags: stars
+    l_adv_bonus_mult_bulls_eye:
+        number: 10
+        default_on_color: 00ff00
+    l_4_star:
+        number: 11 
+        default_on_color: red
+        tags: stars
+    l_3_star:
+        number: 12
+        default_on_color: red
+        tags: stars 
+    l_1_star:
+        number: 13
+        default_on_color: red
+        tags: stars 
+    l_2_star:
+        number: 14
+        default_on_color: red
+        tags: stars
+    l_C_rollover_right:
+        number: 15
+        default_on_color: ffff00
+        tags: lane, laneCr
+    l_I_rollover:
+        number: 16
+        default_on_color: ffff00
+        tags: lane, laneI   
+    l_C_rollover_left:
+        number: 17          
+        default_on_color: ffff00
+        tags: lane, laneCl
+    l_H_rollover:
+        number: 18
+        default_on_color: ffff00
+        tags: lane, laneH
+    l_score_bonus_bulls_eye:
+        number: 19
+        default_on_color: ffff00    
+    l_left_inlane:
+        number: 20
+        default_on_color: ff0000
+    l_extra_ball_white_drops:
+        number: 21
+        default_on_color: ff0000
+        tags: eb_wd
+    l_right_inlane:
+        number: 22
+        default_on_color: ff0000    
+    l_1k_bonus:
+        number: 23
+        default_on_color: ffff00
+        tags: bonus  #, bx
+    l_2k_bonus:
+        number: 24
+        default_on_color: ffff00
+        tags: bonus
+    l_3k_bonus:
+        number: 25
+        default_on_color: ffff00
+        tags: bonus
+    l_4k_bonus:
+        number: 26
+        default_on_color: ffff00
+        tags: bonus
+    l_5k_bonus:
+        number: 27
+        default_on_color: ffff00
+        tags: bonus
+    l_6k_bonus:
+        number: 28
+        default_on_color: ffff00
+        tags: bonus
+    l_7k_bonus:
+        number: 29
+        default_on_color: ffff00
+        tags: bonus
+    l_8k_bonus:
+        number: 30
+        default_on_color: ffff00
+        tags: bonus
+    l_9k_bonus:
+        number: 31
+        default_on_color: ffff00
+        tags: bonus
+    l_10k_bonus:
+        number: 32
+        default_on_color: ffff00
+        tags: bonus
+    l_5x_bonus:
+        number: 33
+        default_on_color: 00ff00
+        tags: 5x, bonusMult
+    l_4x_bonus:
+        number: 34
+        default_on_color: 00ff00
+        tags: 4x,bonusMult
+    l_3x_bonus:
+        number: 35
+        default_on_color: 00ff00        
+        tags: 3x, bonusMult
+    l_2x_bonus:
+        number: 36
+        default_on_color: 00ff00
+        tags: 2x, bonusMult
+        
+sound_system:            # must be in machine config      
+  master_volume: 0.75
+  tracks:
+    music:
+      type: standard
+      simultaneous_sounds: 1
+      volume: 0.5
+    voice:
+      type: standard
+      simultaneous_sounds: 1
+      volume: 0.7
+    sfx:
+      type: standard
+      simultaneous_sounds: 8
+      volume: 0.4
+
+assets:
+  sounds:
+    default:
+      load: on_demand  #preload
+    music:
+      track: music
+    sfx:
+      track: sfx
+    voice:
+      track: voice
+      
+#sounds:                  # need to equalise, sensational,  i love it?
+  # # Wow:              
+    # # file: Wow.wav         #looks like if you call a sound by it's file name 
+    # # priority: 5
+    # # volume: 0.5           #  you don't need to delacre it in sounds:
+        
+sound_player:
+  drop_target_bank_white_drops_down:    #from wdrops mode
+    Iloveit:
+      action: play
+      volume: 1.0
+      
+  drop_target_bank_red_drops_down:      #from rdrops mode
+    sensational:
+      action: play
+      volume: 1.0
+      
+  s_Rollover_5_active:
+    Ooh:
+      action: play
+      volume: 1.0
+      
+  s_Rollover_3_active:
+    ooh-end:
+      action: play
+      volume: 1.0
+      
+  s_Rollover_1_active:
+    yess:
+      action: play
+      volume: 1.0
+
+  s_Bulls_eye_active:                   #from bullseye mode
+    #sw_be_active:           #this also works as a tag
+    GunShot2:
+      action: play
+      volume: 1.0
+                         
+  in_group_lit_hit:                     # this from inlanes mode
+    #sw_in_left_active:  #in_left_lit_hit:   #s_Left_inlane_active:  #InLanescoreSpec:
+    #priority: 2
+    #s_Left_inlane_active{device.shots.in_left.state_name=='lit'}:
+    whooTracy:
+      #priority: 6
+      action: play
+      volume: 1.0 
+
+  CHICgrp_unlit_complete:          #from chic mode
+    Wow:
+      action: play
+      volume: 1.0
+
+  ball_started{ball==1}:           #from base mode
+    GoodMorning:
+      action: play
+      volume: 1.0
+  ball_started{ball!=1}:  
+    GoodLuckAngels:
+      action: play
+      volume: 1.0  
+
+  sw_pop_active:
+    Gun_Silencer:
+      action: play
+      volume: 1.0
+
+  sw_outlane_active:
+    # # ball_drain:
+    OhBossley:
+      action: play
+      volume: 1.0   
+      
+  ball_started:      #put this back in after debug!
+    Theme_Song:
+      action: play
+      loops: -1
+  ball_drain:
+    Theme_Song:
+      action: stop
+      
+  bonus_code_step:     # from bonus mode code
+    Gun_Silencer:   #Ooh1:
+      action: play
+      volume: 1.0
+
+
+# displays:
+    # window:
+        # width: 800
+        # height: 600
+
+
+displays:
+    window:
+        width: 800
+        height: 400
+        
+slides:
+    #- duration: 5s
+    welcome_slide:
+        widgets:
+            - type: text
+              text: MPF Test - Charlies Angels
+              font_size: 50
+              color: green
+            - type: rectangle
+              width: 600
+              height: 60
+              
+    segment_displays:
+        widgets:
+            - type: text
+              text: (player1|score)
+              font_size: 50
+              color: blue
+              font_name: ten_segment
+              x: 100
+              y: 300
+              anchor_x: left 
+              anchor_y: bottom
+            - type: text
+              text: (player2|score)
+              font_size: 50
+              color: blue
+              font_name: ten_segment
+              x: 700
+              y: 300
+              anchor_x: right 
+              anchor_y: bottom
+            - type: text
+              text: (player3|score)
+              font_size: 50
+              color: blue
+              font_name: ten_segment
+              x: 100
+              y: 100
+              anchor_x: left 
+              anchor_y: bottom
+            - type: text
+              text: (player4|score)
+              font_size: 50
+              color: blue
+              font_name: ten_segment
+              x: 700
+              y: 100
+              anchor_x: right 
+              anchor_y: bottom
+            - type: text
+              text: (ball)   #(current_player|ball)
+              min_digits: 2
+              font_size: 30
+              color: blue
+              font_name: ten_segment
+              x: 400
+              y: 50
+              anchor_x: center
+              anchor_y: bottom
+                            
+slide_player:
+    init_done: welcome_slide
+    game_started: segment_displays

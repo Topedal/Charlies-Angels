@@ -1,0 +1,64 @@
+#config_version=5
+
+##! mode: chic
+
+mode:
+  start_events: ball_starting
+  stop_events: ball_drain
+  priority: 130
+    
+shot_groups:
+  CHICgrp:
+    shots: Cshot, Hshot, Ishot
+    reset_events: ball_started   #ing
+    #disable_events: bonus_multiplier{current_player.bonus_multiplier == 5}
+    disable_events: player_bonus_multiplier{value == 5}  
+    enable_events: ball_started
+
+shot_profiles:
+  top_lanes:
+    states:
+      - name: lit
+        show: "on"
+      - name: unlit
+        show: "off"
+
+shots:
+  Cshot:
+    switches:
+      s_C_rollovers       # two C rollover switches in parallel
+    profile:
+      top_lanes
+    show_tokens:
+      lights: laneCl, laneCr
+    reset_events: 
+      - CHICgrp_complete    #completing CHIC only resets C; H & I remain lit for ball duration
+      - ball_drain   #start ed|ing   #drain
+    
+  Hshot:
+    switches:
+      s_H_rollover 
+    profile:
+      top_lanes    
+    show_tokens:
+      lights: laneH
+    reset_events: ball_drain
+      
+  Ishot:
+    switches:
+      s_I_rollover 
+    profile:
+      top_lanes    
+    show_tokens:
+      lights: laneI
+    reset_events: ball_drain
+    
+variable_player:
+  CHICgrp_complete:
+    bonus_multiplier: 1
+    
+# sound_player:
+  # CHICgrp_unlit_complete:
+    # Wow:
+      # action: play
+      # volume: 1.0

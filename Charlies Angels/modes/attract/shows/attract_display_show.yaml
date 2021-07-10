@@ -1,0 +1,42 @@
+#show_version=5
+- duration: 5
+  segment_displays:
+    display1:
+     text: " LISY 1"
+    display2:
+     text: "  and  "
+    display3:
+     text: "  MPF  "
+    display4:
+     text: "       "
+- duration: 5
+  segment_displays:
+    display1:
+     text: " Daves"
+    display2:
+     text: " Angels"
+    display3:
+     text: "       "
+    display4:
+     text: "       "
+- duration: 5
+  segment_displays:
+    display1:
+     text: " kelly "
+    display2:
+     text: "  kris "
+    display3:
+     text: "sabrna"
+    display4:
+     text: " bosley"
+- duration: 5
+  segment_displays:
+    display1:
+     text: "babes "
+    display2:
+     text: " bums "
+    display3:
+     text: " boobs"
+    display4:
+     text: "+ hair"
+

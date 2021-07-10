@@ -1,0 +1,26 @@
+#show_version=5
+- duration: 1
+  lights:
+    l_2x_bonus: on
+- duration: 1
+  lights:
+    l_3x_bonus: on
+- duration: 1
+  lights:
+    l_4x_bonus: on
+- duration: 1
+  lights:
+    l_5x_bonus: on
+- duration: 1
+  lights:
+    l_2x_bonus: 0
+- duration: 1
+  lights:
+    l_3x_bonus: 0
+- duration: 1
+  lights:
+    l_4x_bonus: 0
+- duration: 1
+  lights:
+    l_5x_bonus: 0
+

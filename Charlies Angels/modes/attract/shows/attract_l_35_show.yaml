@@ -1,0 +1,15 @@
+#show_version=5
+
+# use this just to test a single lamp to show the mapping of lamp numbers
+
+- duration: 1
+  lights:
+    l_3x_bonus: on   #l_3x_bonus   3x  is lamp number 35
+
+- duration: 1
+  lights:
+    l_3x_bonus: 0
+
+
+# l_hi_score_to_date_hb   # is lamp number 3
+# l_2x_bonus              # is lamp number 36

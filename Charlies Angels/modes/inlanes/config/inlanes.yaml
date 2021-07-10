@@ -1,0 +1,46 @@
+#config_version=5
+
+##! mode: inlanes
+
+# When CHIC lanes complete, inlanes lite alternately for Special
+#  when a lit inlane is hit the Special is scored - only allow once per CHIC lane completion
+
+mode:
+    start_events: CHICgrp_unlit_complete    # triggered from the chic mode  ??can you get >1 spec / ball
+    stop_events: 
+        - InLanescoreSpec
+        - ball_drain
+    priority: 200  
+                        
+event_player:
+    in_left_lit_hit: InLanescoreSpec    # triggers a credit in config\credit:
+    in_right_lit_hit: InLanescoreSpec
+
+shot_groups:
+    in_group:
+        shots: in_left, in_right
+        rotate_events: player_score     # any score event alternates the Spec lites
+
+shots:  
+    in_left:
+        switch: s_Left_inlane
+        advance_events: mode_inlanes_started  # this kicks of the rotation        
+        show_tokens: 
+            light: l_left_inlane          # uses default profile unlit | lit
+        reset_events: in_left_hit         # dont want both inlane specials lit
+        
+    in_right:
+        switch: s_Right_inlane
+        show_tokens: 
+            light: l_right_inlane        
+        reset_events:  in_right_hit
+
+# sound_player:
+    # in_group_lit_hit:   #in_left_lit_hit:   #s_Left_inlane_active:  #InLanescoreSpec:    #sw_in_left_active:
+        # #priority: 2
+    # #s_Left_inlane_active{device.shots.in_left.state_name=='lit'}:
+        # whooTracy:
+            # #priority: 6
+            # action: play
+            # volume: 1.0
+
